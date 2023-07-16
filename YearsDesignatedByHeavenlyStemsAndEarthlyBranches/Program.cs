@@ -26,41 +26,49 @@ namespace YearsDesignatedByHeavenlyStemsAndEarthlyBranches
                 Console.WriteLine("2.NumberToYear:");
                 string? select = Console.ReadLine();
                 Console.Clear();
-                switch (select)
+                try
                 {
-                    case "1":
-                        {
-                            Console.WriteLine("请输入转换为数字年的干支纪年:");
-                            string? year = Console.ReadLine();
-                            if (!string.IsNullOrWhiteSpace(year)
-                                && year.Length == 2
-                                && HeavenlyStems.Any(h => h == year[0])
-                                && Dizhi.Any(d => d == year[1]))
+                    switch (select)
+                    {
+                        case "1":
                             {
-                                Console.WriteLine(YearToNumber(year));
-                                Console.ReadKey();
-                                continue;
-                            }
+                                Console.WriteLine("请输入转换为数字年的干支纪年:");
+                                string? year = Console.ReadLine();
+                                if (!string.IsNullOrWhiteSpace(year)
+                                    && year.Length == 2
+                                    && HeavenlyStems.Any(h => h == year[0])
+                                    && Dizhi.Any(d => d == year[1]))
+                                {
+                                    Console.WriteLine(YearToNumber(year));
+                                    Console.ReadKey();
+                                    continue;
+                                }
 
-                            break;
-                        }
-                    case "2":
-                        {
-                            Console.WriteLine("请输入转换为干支纪年的数字年:");
-                            string? number = Console.ReadLine();
-                            if (!string.IsNullOrWhiteSpace(number)
-                                && number.All(char.IsDigit))
+                                break;
+                            }
+                        case "2":
                             {
-                                var numberToYear = NumberToYear(number);
-                                Console.WriteLine($"{number}转换为{numberToYear}年");
-                                Console.ReadKey();
-                                continue;
-                            }
+                                Console.WriteLine("请输入转换为干支纪年的数字年:");
+                                string? number = Console.ReadLine();
+                                if (!string.IsNullOrWhiteSpace(number)
+                                    && number.All(char.IsDigit))
+                                {
+                                    var numberToYear = NumberToYear(number);
+                                    Console.WriteLine($"{number}转换为{numberToYear}年");
+                                    Console.ReadKey();
+                                    continue;
+                                }
 
-                            break;
-                        }
+                                break;
+                            }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
                 }
                 Console.WriteLine("输入不正确");
+                Console.ReadKey();
             }
         }
         /// <summary>
