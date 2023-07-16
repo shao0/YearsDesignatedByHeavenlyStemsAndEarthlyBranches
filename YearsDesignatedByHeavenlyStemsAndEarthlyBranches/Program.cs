@@ -82,9 +82,14 @@ namespace YearsDesignatedByHeavenlyStemsAndEarthlyBranches
             var diZhi = Array.IndexOf(Dizhi, year[1]);
             var yearToNumber = heavenlyStems * 6 - diZhi * 5;
             var stringBuilder = new StringBuilder();
-            for (int i = 0; i < 35; i++)
+            var i = 0;
+            var number = 0;
+            while (number <= DateTime.Now.Year)
             {
-                stringBuilder.AppendLine($"{year}转换为{yearToNumber + i * 60}年");
+                number = yearToNumber + i * 60;
+                i++;
+                if (number < 0) continue;
+                stringBuilder.AppendLine($"{year}转换为{number}年");
             }
             return stringBuilder.ToString();
         }
