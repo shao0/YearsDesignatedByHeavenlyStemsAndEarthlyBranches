@@ -90,6 +90,7 @@ namespace YearsDesignatedByHeavenlyStemsAndEarthlyBranches
                 i++;
                 if (number < 0) continue;
                 stringBuilder.AppendLine($"{year}转换为{number}年");
+
             }
             return stringBuilder.ToString();
         }
